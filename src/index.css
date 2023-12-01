@@ -16,6 +16,11 @@ button:hover {
   color: white;
 }
 
+input:focus,
+button:focus {
+  outline: 3px solid #333;
+}
+
 .app {
   display: flex;
   justify-content: center;
@@ -58,10 +63,6 @@ button:hover {
   border: none;
   border-radius: 5px;
   font-size: 18px;
-}
-
-.input input:focus {
-  outline: 2px solid #333;
 }
 
 .input button {

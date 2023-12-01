@@ -2,8 +2,8 @@ import { useState, useRef } from "react";
 import Input from "./components/Input";
 import Label from "./components/Label";
 import Sort from "./components/Sort";
-import { bubbleSort, selectionSort } from "./helper_functions/sortingFunctions";
 import Result from "./components/Result";
+import { bubbleSort, selectionSort } from "./helper_functions/sortingFunctions";
 
 function App() {
   const [array, setArray] = useState([]);
@@ -12,8 +12,15 @@ function App() {
 
   const handleInput = () => {
     if (inputRef.current.value === "") return;
-    setArray([...array, Number(inputRef.current.value)]);
-    inputRef.current.value = "";
+    if (
+      Number(inputRef.current.value) ||
+      Number(inputRef.current.value) === 0
+    ) {
+      setArray([...array, Number(inputRef.current.value)]);
+      inputRef.current.value = "";
+    } else {
+      return setResult("Add only numbers, please");
+    }
   };
 
   const handleSort = (sortingType) =>
@@ -24,6 +31,7 @@ function App() {
   const clear = () => {
     setArray([]);
     setResult([]);
+    inputRef.current.value = "";
   };
 
   return (
